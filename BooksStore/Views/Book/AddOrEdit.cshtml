@@ -1,0 +1,58 @@
+﻿@model BooksStore.Models.Book
+
+@{
+    ViewData["Title"] = "Book";
+}
+<hr />
+<div class="row">
+    <div class="col-md-6 offset-md-4">
+        <h1>Book</h1>
+        <form asp-action="AddOrEdit" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookId" />
+            <input type="hidden" asp-for="Date" />
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-dark"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genre" class="control-label"></label>
+                <input asp-for="Genre" class="form-control" />
+                <span asp-validation-for="Genre" class="text-dark"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publisher" class="control-label"></label>
+                <input asp-for="Publisher" class="form-control" />
+                <span asp-validation-for="Publisher" class="text-dark"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control","input-group-prepend" />
+                <span asp-validation-for="Author" class="text-dark"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Total_pages" class="control-label"></label>
+                <input asp-for="Total_pages" class="form-control" />
+                <span asp-validation-for="Total_pages" class="text-dark"></span>
+            </div>
+                               
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="submit" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <a asp-action="Index" class="btn btn-info">List of All Books</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

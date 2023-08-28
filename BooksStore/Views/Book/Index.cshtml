@@ -1,0 +1,83 @@
+﻿@model IEnumerable<BooksStore.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Book Details</h1>
+
+
+<table class="table" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>          
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_pages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                <a asp-action="AddOrEdit" class="btn btn-sm btn-info">
+                    <i class="fa-solid fa-plus"></i> Add
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_pages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+
+                <td>
+                    <form asp-action="Delete" asp-route-id="@item.BookId" >
+                        <div class="btn-group btn-group-sm">
+                            <a asp-action="AddOrEdit" asp-route-id="@item.BookId" class="btn btn-warning">
+                                Edit
+                            </a>
+                            <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure to delete this record?')">
+                                 delete
+                            </button>
+                        </div>
+                    </form>
+                </td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </tr>
+}
+    </tbody>
+</table>
